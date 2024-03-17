@@ -7,6 +7,5 @@
 
 <cfif form.keyExists("firstname")>
     <cfset newAccountResult = stateFunctions.processNewAccount(form) />
-    <cfif newAccountResult.success>
-        <cfset accountMessage = newAccountResult.message />
+    <cfset accountMessage = newAccountResult.message />
 </cfif>

@@ -1,4 +1,4 @@
-<cfparam name="AccountMessage" default="" />
+<cfparam name="accountMessage" default="" />
 
 <script type="text/javascript">
     function validateNewAccount() {
@@ -22,7 +22,7 @@
     <div id="accountMessage"></div>
 
 
-    <form action="#cgi.script_name#?p=login" method="POST" >
+    <form action="#cgi.script_name#?p=login" method="post" >
         
         <div class="form-floating mb-3">
             <input type="text" id="title" name="title" class="form-control" placeholder="Please Enter the Mr./Ms./Mrs./Other Title" />

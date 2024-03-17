@@ -1,20 +1,26 @@
+
 component {
-    function obtainUser(
-        isLoggedIn = false,
-        firstname="",
-        lastname="",
-        email="",
-        acctNumber=""
-        )
+
+    function obtainUser(){
+        return {
+        "isLoggedIn":"",
+        "firstname":"",
+        "lastname":"",
+        "email":"",
+        "acctNumber":""
+        }
+    }
 
         function processNewAccount(formData){
             var retme = {
                 success:false, message:""
             }
-            if(emailUnique( formdata.email )){
+
+            if(emailUnique(formdata.email)){
                 var newId = createuuid();
-                if ( addPassword(newId, formData.password) ){
-                    addAccount(newid, formdata.title, formData.firstname, formData.lastname, formData.email);
+                writeDump(formData);
+                if ( addPassword(newid, formData.password) ){
+                    addAccount(newid, formdata.title, formdata.firstname, formdata.lastname, formdata.email);
                     retme.success=true;
                     retme.message = "Account Made.  Go login!"
                 } else {
@@ -28,8 +34,8 @@ component {
 
         function emailUnique(required string email){
             var qs = new query(datascource = application.dsource);
-            qs.setSql("select * from people where email=:email");
-            qs.addParam(name="email", value=arguments.email)
+            qs.setSql('select * from people where email=:email'); 
+            qs.addParam(name = 'email', value=arguments.email);
             return qs.execute().getResults().recordcount == 0;
         }
 
@@ -43,33 +49,38 @@ component {
                     name = "password",
                     value = hash( arguments.password, "SHA-512" )
                     );
-            qs.execute();
-            return true;
-            }
-
-            catch(ary err){
+                qs.execute();
+                return true;
+            } catch(ary err){
+                writeDump(err); abort;
                 return false;
             }
-           }
+        }
 
-           function addAccount(id, title, firstname, lastname, email){
+        function addAccount(
+            required string id,
+            required string firstName,
+            required string lastName,
+            required string email,
+            numeric isAdmin = 0
+            ) {
             try {
                 var qs = new query(datasource = application.dsource);
-                qs.setSql("insert into people (personid, title, firstname, lastname, email)
-                values (:personid, :title, :firstname, :lastname, :email) ");
+                qs.setSql("insert into people (personid, title, firstname, lastname, email, isAdmin)
+                values (:personid, :title, :firstname, :lastname, :email, :isAdmin) ");
                 qs.addParam(name = "personid", value = arguments.id);
                 qs.addParam(name = "title", value = arguments.title);
                 qs.addParam(name = "firstname", value = arguments.firstname);
                 qs.addParam(name = "lastname", value = arguments.lastname);
                 qs.addParam(name = "email", value = arguments.email);
+                qs.addParam(name = "isAdmin", value=arguments.isAdmin);
 
-            qs.execute();
-            return true;
-            }
-
-            catch(ary err){
+                qs.execute();
+                return true;
+            } catch (ary err) {
+                writeDump(err); abort;
                 return false;
             }
-           }          
+        }          
            
 }

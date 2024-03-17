@@ -3,7 +3,7 @@
 <cfdump var="#form#">
 
 <cfoutput>
-        <cfset bookinfo = bookstoreFunctions.obtainSearchResults( searchme ) />
+    <cfset bookinfo = bookstoreFunctions.obtainSearchResults( searchme ) />
 
     <cfif bookinfo.recordcount == 0>
         There were no results.  Please search again.
@@ -19,16 +19,17 @@
 
 <cffunction name="oneResult">
     <cfoutput>
+        <h2>Search Results</h2>
         <div class="row">
-            <div class="col-6>"
+            <div class="col-6">
                 <img src="images/#bookinfo.image[1]#" style="float:left; width:250px; height:250px"/>
             </div>
             <div class="col-6">
-                <span> Title: #bookinfo.title[1]#</span></br>
-                <span> Year: #bookinfo.year[1]#</span></br>
-                <span> Pages: #bookinfo.pages[1]#</span></br>
-                <span> Description: #bookinfo.description[1]#</span></br>
-                <span> Publisher: #bookinfo.name[1]#</span>
+                Title: #bookinfo.title[1]#</br>
+                Year: #bookinfo.year[1]#</br>
+                Pages: #bookinfo.pages[1]#</br>
+                Description: #bookinfo.description[1]#</br>
+                Publisher: #bookinfo.name[1]#
             </div>
         </div>
     </cfoutput>
