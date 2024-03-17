@@ -27,6 +27,7 @@
             </div>
 
             <div id="maincontent" class="row">
+                <cfparam name="searchMe" default="" />
                 <cfparam name="p" default="carousel" />
 
                 <cfinclude template = "#p#.cfm" />

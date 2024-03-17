@@ -28,6 +28,12 @@
                     <input class="form-control me-2" type="search" name="searchme" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+            
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Cgi.SCRIPT_NAME#?p=login"> Login </a>
+                    </li>
+                </ul>
             </cfoutput>
         </div>
     </nav>
