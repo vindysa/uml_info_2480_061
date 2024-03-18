@@ -28,10 +28,24 @@
                     <input class="form-control me-2" type="search" name="searchme" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-            
+
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#Cgi.SCRIPT_NAME#?p=login"> Login </a>
+                        <cfif session.user.isLoggedIn>
+                            <a class="nav-link">Welcome #session.user.firstname#</a>
+                        </cfif>
+                    </li>
+                    <li class="nav-item">
+                        <cfif session.user.isLoggedIn>
+                            <a class="nav-link" href="#cgi.SCRIPT_NAME#?p=logoff">Logout</a>
+                        <cfelse>
+                            <a class="nav-link" href="#Cgi.SCRIPT_NAME#?p=login">Login</a>
+                        </cfif>
+                    </li>
+                    <li>
+                        <cfif session.user.isadmin>
+                            <a class="nav-link" href="/VallenInDelicato/MyFinalProject/MANAGEMENT/">Management Page</a>
+                        </cfif>
                     </li>
                 </ul>
             </cfoutput>

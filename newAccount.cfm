@@ -40,7 +40,7 @@
         </div>
 
         <div class="form-floating mb-3">
-            <input type="text" id="email" name="email" class="form-control" placeholder="Please Enter your email" required />
+            <input type="email" id="email" name="email" class="form-control" placeholder="Please Enter your email" required />
             <label for="email">*Email</label>
         </div>
 

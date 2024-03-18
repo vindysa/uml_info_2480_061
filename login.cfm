@@ -1,4 +1,3 @@
-
 <cfparam name="LoginMessage" default="" />
 
 <div class="row" >
