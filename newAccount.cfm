@@ -19,7 +19,7 @@
 </script>
 
 <cfoutput>
-    <div id="accountMessage"></div>
+    <div id="accountMessage">#accountMessage#</div>
 
 
     <form action="#cgi.script_name#?p=login" method="post" >

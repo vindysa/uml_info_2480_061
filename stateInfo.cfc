@@ -11,24 +11,24 @@ component {
         }
     }
 
-        function processNewAccount(formData){
+        function processNewAccount(formdata){
             var retme = {
                 success:false, message:""
             }
 
-            if(emailUnique(formdata.email)){
+            if (emailUnique(formdata.email)) {
                 var newId = createuuid();
-                writeDump(formData);
-                if ( addPassword(newId, formData.password) ){
-                    addAccount(newid, formdata.title, formdata.firstname, formdata.lastname, formdata.email);
+                if ( addPassword(newId, formdata.password) ){
+                    addAccount(newId, formdata.title, formdata.firstname, formdata.lastname, formdata.email);
                     retme.success=true;
-                    retme.message = "Account Made.  Go login!"
+                    retme.message = "Account Made.  Go login!";
                 } else {
                     retme.message = "We had a problem.  Please resubmit";
                 }
             } else {
-                retme.message = "That email is already in our database.  Please login instead."
+                retme.message = "That email is already in our database.  Please login instead.";
             }
+            writeDump(retme)
             return retme;
         }
 
