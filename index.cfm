@@ -13,27 +13,25 @@
 
 
     <body>
-
+        <cfparam name="p" default="carousel" />
+        <cfinclude template="stateInfo.cfm" />
         <cfset bookstoreFunctions = createObject("bookstore") />
-
+        
         <div id="wrapper" class="container">
 
             <cfinclude template="header.cfm"/>
 
             <div id="horizontalnav" class="row">
-
                 <cfinclude template="horizontalnav.cfm"/>
-
             </div>
 
             <div id="maincontent" class="row">
-                <cfparam name="searchMe" default="" />
-                <cfparam name="p" default="carousel" />
-
-                <cfinclude template = "#p#.cfm" />
-
-                <cfinclude template="genrenav.cfm"/>
-
+                <section id="center" class="col-sm-9 order-last">
+                    <cfinclude template = "#p#.cfm" />
+                </section>
+                <section id="left" class="col-sm-3 order first">
+                    <cfinclude template="genrenav.cfm"/>
+                </section>
             </div>
 
             <cfinclude template="footer.cfm"/>
