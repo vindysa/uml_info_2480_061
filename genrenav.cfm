@@ -1,4 +1,3 @@
-<section id="left" class="col-sm-3 order-first">
     <h3>Search By Genre</h3>
     <ul class="nav flex-column">
         <li class="nav-item"><a class="nav-link">Childrens's Books</a></li>
@@ -9,4 +8,3 @@
         <li class="nav-item"><a class="nav-link">Religion</a></li>
         <li class="nav-item"><a class="nav-link">Technology</a></li>
     </ul>
-</section>
