@@ -27,6 +27,7 @@ component {
         } else if (genre.len() > 0) {
             return 'Genre: #genreName(arguments.genre)#';
         }
+    }
 
     function genreName(genreid) {
         var qs = new query(datasource = application.dsource);
