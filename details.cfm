@@ -1,9 +1,18 @@
+<cfparam name="searchme" default="">
+<cfparam name="genre" default="" />
 
+<cfset bookinfo = bookstoreFunctions.obtainSearchResults( searchme, genre ) />
 
 <cfdump var="#form#">
 
 <cfoutput>
-    <cfset bookinfo = bookstoreFunctions.obtainSearchResults( searchme ) />
+    <div>
+        <h3>
+            <cfoutput>
+                #bookstoreFunctions.resultsHeader(searchme, genre)#
+            </cfoutput>
+        </h3>
+    </div>
 
     <cfif bookinfo.recordcount == 0>
         There were no results.  Please search again.
@@ -11,7 +20,6 @@
         <cfset oneResult()/>
     <cfelse>
         <cfset manyResults() />
-
     </cfif>
 
     <cfdump var="#bookinfo#" />
@@ -36,7 +44,7 @@
 </cffunction>
 
 <cffunction name="manyResults">
-    <cfoutput query="bookinfo"> 
+    <cfoutput query="bookinfo">
         <ol class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link" href="#cgi.script_name#?p=details&searchme=#trim(isbn13)#">
